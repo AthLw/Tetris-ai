@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="Tetris.css" type="text/css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <div id="prompt">
+        <div class="operation-prompt" id="prompt-information"></div>
+        <div class="operation-prompt">
+            <span class="operation-name">开始</span>
+            <div class="operation-pic" id="start-operation"></div>
+        </div>
+        <div class="operation-prompt">
+            <span class="operation-name">退出</span>
+            <div class="operation-pic" id="esc-operation"></div>
+        </div>
+        <div class="operation-prompt">
+            <span class="operation-name">暂停</span>
+            <div class="operation-pic" id="pause-operation"></div>
+        </div>
+        <div class="operation-prompt">
+            <span class="operation-name">旋转</span>
+            <div class="operation-pic" id="rotate-operation"></div>
+        </div>
+        <div class="operation-prompt">
+            <span class="operation-name">左移</span>
+            <div class="operation-pic" id="left-operation"></div>
+        </div>
+        <div class="operation-prompt">
+            <span class="operation-name">右移</span>
+            <div class="operation-pic" id="right-operation"></div>
+        </div>
+        <div class="operation-prompt">
+            <span class="operation-name">加速</span>
+            <div class="operation-pic" id="down-operation"></div>
+        </div>
+    </div>
+    <table id="grid">
+        <tbody>
+        </tbody>
+    </table>
+    <div id="information">
+        <div id="warning">
+            <p>！注意！切换到AI后将无法按左右键移动</p>
+            <br>
+            <p>按  <strong>X</strong> 键切换控制权</p>
+            <div id="x-operation"></div>
+        </div>
+        <br>
+        <div id="next-model">
+            <p id="next-model-text">NEXT TILE</p>
+            <table id="next-tile"></table>
+        </div>
+        <div id="score-panel">
+            <div id="score-pic"></div>
+            <span id="score"></span>
+        </div>
+    </div>
+
+</body>
+<script src="./js/Model.js"></script>
+<script src="./js/render.js"></script>
+<script src="./js/lib.js"></script>
+<script src="./websocket/websocket-client.js"></script>
+<script src="./js/Tetris.js"></script>
+<script src="./js/allListen.js"></script>
+<script src="./js/Thread.js"></script>
+</html>
