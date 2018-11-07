@@ -49,6 +49,57 @@ var AIResult;
 var AIMove;
 
 
+function refreshVariable(){
+    stepSize = 1;
+    speed = 200;                        //初始移速
+    score = 0;
+    needNext = false;                   //是否需要下一个对象
+
+    /**
+     * 线程id信息
+     */
+    datafreshId = null;
+    renderId = null;
+    transid = null;
+
+    /**
+     * 当前对象，以及前一对象信息
+     */
+    currentShape = null;
+    currentObj = null;
+    preObj = null;                          //存储前一帧对象位置
+    nextShape = null;
+    nextObj = null;
+
+    /**
+     * 操作信息
+     */
+    operation = 'D';
+    pause = false;
+
+    /**
+     * AI信息
+     */
+    player = true;                              //true代表玩家自己，false代表ai
+    AIData = null;
+    AIResult = null;
+    AIMove = null;
+    generateObj();              //首先生成对象
+    for(let i = 0; i < ROWNUM; i++){                       //生成表格
+        for(let j = 0; j < COLNUM; j++){
+            graph[i][j]= -1;
+        }
+    }
+    for(let i = 0; i < nextGraphROWNUM; i++){
+        for(let j = 0; j < nextGraphCOLNUM; j++){
+            nextGraph[i][j] = -1;
+        }
+    }
+    //console.log(nextGraph);
+    loadGraph(nextGraph, nextObj, "addCurrent");
+    AIData.pattern = deepcopy(graph);
+}
+
 /**
  *初始化函数
  *
@@ -76,7 +127,7 @@ function init(){
         }
         document.getElementById("next-tile").appendChild(row);
     }
-    console.log(nextGraph);
+    //console.log(nextGraph);
     loadGraph(nextGraph, nextObj, "addCurrent");
     AIData.pattern = deepcopy(graph);
 }
@@ -116,9 +167,9 @@ function generateObj(){
             edge: [3, 0],
             area: currentShape.getModel(),
         }
-        console.log(nextGraph);
+        //console.log(nextGraph);
         loadGraph(nextGraph, tempObj, "removePre");
-        console.log(nextGraph);
+        //console.log(nextGraph);
         loadGraph(nextGraph, nextObj, "addCurrent");
     }
     // if(!player){
@@ -532,4 +583,16 @@ function GameOver(){
     clearInterval(transid);
     document.removeEventListener('keydown', personListener);
     document.removeEventListener('keydown', listener);
+    let maxScore = localStorage.getItem("Tetris-Ai-Max-Score");
+    if(maxScore < score){
+        localStorage.setItem("Tetris-Ai-Max-Score", score);
+    }
+    document.getElementById("max-score-value").innerHTML = localStorage.getItem("Tetris-Ai-Max-Score");
+    let res = confirm("游戏已结束，是否继续？")
+    if(res){
+        refreshVariable();
+        addListen();
+    }else{
+        window.close();
+    }
 }

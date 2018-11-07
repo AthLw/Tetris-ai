@@ -161,3 +161,20 @@ td{
     bottom: 40px;
     font-size: 60px;
 }
+
+#max-score-panel{
+    width: 400px;
+    height: 60px;
+    position: absolute;
+    bottom: 100px;
+    left: 300px;
+    color: goldenrod;
+    font-size: 40px;
+    float: left;
+}
+
+#max-score-value{
+    font-size: 50px;
+    vertical-align: middle;
+    color: red;
+}

@@ -2,6 +2,13 @@
 
 ## 注意！ 实现ai需要安装node.js
 
+> 1. 首先下载 [node](https://nodejs.org/zh-cn/download/)
+> 2. 下载完成后可以按[此教程](http://www.runoob.com/nodejs/nodejs-install-setup.html)配置
+> 3. 确定环境变量配置好后，进入websocket文件夹
+> 4. 执行```npm install ws``` 确保ws模块已安装
+> 5. 执行
+    ```node websocket-server.js```
+
 ## JavaScript files
 
 > 1. alllisten.js  
