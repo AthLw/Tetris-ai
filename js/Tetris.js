@@ -5,16 +5,16 @@ var graph = new Array();
 var nextGraph = new Array();
 var nextGraphCOLNUM = 4;
 var nextGraphROWNUM = 4;
-var COLNUM = 15;
+var COLNUM = 10;
 var ROWNUM = 20;
 
 /**
  * 移动信息
  */
 var stepSize = 1;
-var speed = 200;                        //初始移速
-const aiSpeed = 20;
-const userSpeed = 200;
+var speed = 300;                        //初始移速
+const aiSpeed = 10;
+const userSpeed = 300;
 var score = 0;
 var needNext = false;                   //是否需要下一个对象
 
@@ -39,7 +39,7 @@ var nextObj = null;
  */
 var operation = 'D';
 var pause = false;
-
+var isStart = false;
 /**
  * AI信息
  */
@@ -380,18 +380,22 @@ function listener(){
     let e = event;
     switch(e.keyCode){
         case 88:
-            if(player){
-                document.removeEventListener('keydown', personListener);
-                speed = aiSpeed;
+            if(isStart){
+                if(player){
+                    document.removeEventListener('keydown', personListener);
+                    speed = aiSpeed;
+                }
+                else{
+                    document.addEventListener('keydown', personListener); 
+                    speed = userSpeed;               
+                }
+                player = !player;
             }
-            else{
-                document.addEventListener('keydown', personListener); 
-                speed = userSpeed;               
-            }
-            player = !player;
             break;
         case 32:
-            pause = !pause;
+            if(isStart){
+                pause = !pause;
+            }
             break;
         case 13:
             Start();
@@ -403,8 +407,15 @@ function listener(){
 }
 
 function Start(){
-    transid = setInterval(communicateWithAIThread, 10);                 //每10ms尝试交换一次
-    datafreshId = setTimeout(DataRefreshThread, speed);                 //启动刷新图表线程
+    if(!isStart){
+        transid = setInterval(communicateWithAIThread, 10);                 //每10ms尝试交换一次
+        datafreshId = setTimeout(DataRefreshThread, speed);                 //启动刷新图表线程
+        isStart = true;
+        addListen();
+    }else{
+        refreshVariable();
+        addListen();
+    }
 }
 
 /**
@@ -445,6 +456,7 @@ function personListener(){
     switch(e.keyCode){
         case 37:           //左移函数
             operation = 'L';
+            Move();
             break;
 
         case 38:
@@ -453,6 +465,7 @@ function personListener(){
 
         case 39:
             operation = 'R';
+            Move();
             break;
 
         case 40:
@@ -579,6 +592,7 @@ function CanNext(tryObj){
  *
  */
 function GameOver(){
+    isStart = false;
     clearTimeout(datafreshId);
     clearInterval(transid);
     document.removeEventListener('keydown', personListener);
@@ -591,7 +605,7 @@ function GameOver(){
     let res = confirm("游戏已结束，是否继续？")
     if(res){
         refreshVariable();
-        addListen();
+        document.addEventListener('keydown', listener);
     }else{
         window.close();
     }

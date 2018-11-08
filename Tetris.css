@@ -6,18 +6,26 @@
 body{
     float: left;
     opacity: 1.0;
-    background-image: url(./images/tetris.jpg);
+    background-image: url(./images/back1.gif);
     background-repeat: no-repeat;
+    background-size: cover;
+}
+#test{
+    width: 200px;
+    height: 200px;
+    background-image: url(./images/test.gif);
     background-size: cover;
 }
 
 table{
-    width: 450px;
+    width: 300px;
     height: 600px;
     margin-left: 240px;
     margin-top: 80px;
     table-layout: fixed;
     border-collapse: collapse;
+    border-color: aqua;
+    border: solid 1px;
     position: absolute;
 }
 
@@ -25,80 +33,11 @@ td{
     width: 30px;
     height: 30px;
     border: 1px solid;
-}
-
-#prompt{
-    width: 200px;
-    height: 600px;
-    position: absolute;
-    color: orange;
-    font-size: 25px;
-    float: left;
-}
-
-#prompt-information{
-    margin-bottom: 20px;
-    background-image: url(./images/prompt.jpg);
-    background-size: cover;
-}
-
-#start-operation{
-    background-image: url(./images/enter.png);
-    background-size: cover;
-}
-
-#esc-operation{
-    background-image: url(./images/esc.png);
-    background-size: cover;
-}
-
-#pause-operation{
-    background-image: url(./images/space-bar.png);
-    background-size: cover;
-}
-
-#rotate-operation{
-    background-image: url(./images/up.png);
-    background-size: cover;
-}
-
-#left-operation{
-    background-image: url(./images/left.png);
-    background-size: cover;
-}
-
-#right-operation{
-    background-image: url(./images/right.png);
-    background-size: cover;
-}
-
-#down-operation{
-    background-image: url(./images/down.png);
-    background-size: cover;
-}
-
-.operation-prompt{
-    width: 140px;
-    height: 90px;
-    float: left;
-    margin: auto;
-    position: relative;
-}
-
-.operation-name{
-    margin: auto;
-    position: absolute;
-    vertical-align: middle;
+    border-color: aqua;
 }
 
 
-.operation-pic{
-    width: 70px;
-    height: 65px;
-    position: absolute;
-    left: 80px;
-    top: -5px;
-}
+
 
 
 
@@ -108,13 +47,17 @@ td{
     position: absolute;
     right: 100px;
     top: 100px;
-    color: red;
+    color: whitesmoke;
     font-size: 33px;
 }
 
 #warning{
+    width: 230px;
+    height: 140px;
     color: coral;
     font-size: 24px;
+    border: dashed 1px aqua;
+    border-radius: 8px;
 }
 
 #x-operation{
@@ -122,8 +65,19 @@ td{
     height: 60px;
     position: relative;
     left: 50px;
-    background-image: url(./images/change.png);
-    background-size: cover;
+
+}
+
+#next-model{
+    width: 230px;
+    height: 215px;
+    border: dashed 1px aqua;
+    border-radius: 8px;
+}
+
+#next-model-text{
+    position: relative;
+    left: 20px;
 }
 
 #next-tile{
@@ -136,20 +90,22 @@ td{
 }
 
 #score-panel{
-    width: 200px;
+    width: 400px;
     height: 150px;
     float: left;
     position: relative;
+    left: -40px;
+    top: 30px;
+    border: dashed 1px aqua;
 }
 
 #score-pic{
     width: 180px;
     height: 105px;
     position: relative;
-    top: 60px;
-    left: -50px;
-    background-image: url(./images/score.png);
-    background-size: cover;
+    top: 20px;
+    left: 30px;
+    font-size: 30px;
     display: inline-block;
 }
 
@@ -157,13 +113,13 @@ td{
     width: 40px;
     height: 40px;
     position: relative;
-    left: 190px;
-    bottom: 40px;
+    top: 30px;
+    left: 20px;
     font-size: 60px;
 }
 
 #max-score-panel{
-    width: 400px;
+    width: 600px;
     height: 60px;
     position: absolute;
     bottom: 100px;

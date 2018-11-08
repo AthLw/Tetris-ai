@@ -199,12 +199,12 @@ function evaluteFigure(Figure, tempObj) {
     //logger.debug('this is colstransition ' + colstransition);
     //logger.debug('this is holesum' + holesum);
     //logger.debug('this is wellsum ' + wellsum);
-    let eva = (-6.500158825082766*landingheight) +
-            (3.4181268101392694*eliminatedRows) + 
-            (-5.2178882868487753*rowstransition) + 
-            (-9.348695305445199*colstransition) + 
-            (-7.899265427351652*holesum) + 
-            (-13.3855972247263626*wellsum);
+    let eva = (-10.50*landingheight) +
+            (3.41264*eliminatedRows) + 
+            (-5.8887753*rowstransition) + 
+            (-9.34953199*colstransition) + 
+            (-7.89652*holesum) + 
+            (-3.38926*wellsum);
     //logger.debug('this is evalutaion: ' + eva);
     return eva;
 }

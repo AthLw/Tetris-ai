@@ -26,20 +26,20 @@ function chooseColor(value){
     switch(value){
         case -1:
             //背景色
-            return "Grey";
+            return "";
         case 'I':
-            return "Cyan";
+            return "PaleTurquoise";
         case 'J':
-            return "Blue";
+            return "Plum";
         case 'S':
-            return "Green";
+            return "DarkSeaGreen";
         case 'N':
-            return "Red";
+            return "LightCoral";
         case 'O':
-            return "Yellow";
+            return "Khaki";
         case 'L':
-            return "Orange";
+            return "SandyBrown";
         case 'T':
-            return "Purple";
+            return "Grey";
     }
 }

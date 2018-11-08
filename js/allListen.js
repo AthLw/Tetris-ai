@@ -3,4 +3,4 @@ function addListen(){
     document.addEventListener('keydown', personListener);
 }
 
-addListen();
+document.addEventListener('keydown', listener);
